@@ -1,0 +1,99 @@
+Problema: 
+
+La pizzería de Don Pipo cuenta con tres empleados, un maestro pizzero y dos mozos 
+que se encargan de entregar los pedidos a los clientes. Cada mozo puede cargar hasta 
+dos pizzas al mismo tiempo. El maestro pizzero puede cocinar todas las pizzas que se 
+necesiten al mismo tiempo, pues las masas ya están estiradas desde temprano, 
+los ingredientes listos en las heladeras y las instalaciones de la cocina así lo permiten. 
+Este último no necesita descansar, aunque solo puede tomar un único pedido a la vez.
+
+EJERCICIOS:
+
+1. Dado el siguiente diagrama de clases:
+
+MaestroPizzero 
+
+<<Atributos de clase>>
+<<Atributos de instancia>>
+nombre: string
+pizzasPorCocinar: Pizza[]
+pizzasPorEntregar: Pizza[]
+<<Constructores>>
+MaestroPizzero(nom: string)
+<<Comandos>>
+establecerNombre(nom: string)
+tomarPedido(var: str): Pizza
+Requiere var no vacío
+cocinar()
+entregar(): Pizza[]
+<<Consultas>>
+obtenerNombre(): string
+obtenerPizzasPorCocinar(): Pizza[]
+obtenerPizzasPorEntregar(): Pizza[]
+
+Genere la clase MaestroPizzero, conteniendo los atributos y servicios mencionados en el diagrama de clases anterior.
+
+i. El comando tomarPedido debe crear un nuevo objeto de la clase Pizza, de la variedad indicada en 
+el parámetro formal var. Una vez inicializado dicho objeto, debe este agregarse a la lista referenciada 
+por el atributo pizzasPorCocinar.
+ii. El comando cocinar debe tomar todos los objetos de la clase Pizza de la lista pizzasPorCocinar y 
+depositarlos en una segunda lista, pizzasPorEntregar. Si no hay pizzas por ser cocinadas, el comando 
+no tiene efecto sobre el estado interno del objeto.
+iii. El comando entregar retorna hasta un máximo de 2 objetos de la clase Pizza de la 
+lista pizzasPorEntregar, removiéndolos de ella. Si no hay pizzas para ser entregadas, se debe retornar una lista vacía.
+
+2. Dado el siguiente diagrama de clases:
+
+Pizza 
+
+<<Atributos de clase>>
+<<Atributos de instancia>>
+variedad: string
+<<Constructores>>
+Variedad(var: string)
+<<Comandos>>
+establecerVariedad(var: string)
+<<Consultas>>
+obtenerVariedad(): string
+
+Genere la clase Pizza con los atributos y servicios mencionados en dicho diagrama.
+
+3. Se agrega el siguiente diagrama, el cual representa a los mozos de la pizzería a modelar:
+
+Mozo 
+
+<<Atributos de clase>>
+<<Atributos de instancia>>
+nombre: string
+pizzas: Pizza[]
+<<Constructores>>
+Mozo(nom: string)
+<<Comandos>>
+establecerNombre(nom: string)
+tomarPizzas(pizzas: Pizza[])
+Requiere pizzas ligado
+servirPizzas()
+<<Consultas>>
+obtenerNombre(): string
+obtenerPizzas(): Pizza[]
+obtenerEstadoLibre(): boolean
+
+Habiendo analizado el diagrama, genere la clase Mozo con los atributos y servicios mencionados en dicho diagrama.
+
+a. El atributo pizzas se inicializa como una lista vacía.
+b. El comando tomarPizzas agrega los objetos de la clase Pizza referenciados por el parámetro formal pizzas. 
+El mozo puede tomar hasta un máximo de 2 pizzas.
+c. servirPizzas limpia la lista pizzas, haciendo entrega de los pedidos a los clientes.
+d. obtenerEstadoLibre debe retornar True si es que la lista referenciada por el atributo 
+pizzas tiene una longitud de entre 0 y 1. Así mismo, debe retornar False si su tamaño es igual a 2.
+
+5. Construya un programa utilizando las clases proveedoras presentadas en los puntos 1, 2 y 3 que permita:
+
+a. Crear objetos de tipo MaestroPizzero, Mozo y Pizza.
+i. Para una exacta representación de nuestra pizzería, debe limitarse a un único objeto de 
+tipo MaestroPizzero y dos objetos de la clase Mozo.
+b. Enviar los mensajes tomarPedido, cocinar y entregar al objeto de la clase MaestroPizzero.
+c. Enviar los mensajes tomarPizzas y servirPIzzas a los objetos de la clase Mozo creados en el punto a.
+Para la construcción de dicho programa crear una clase de nombre TesterPizzeria que actúe 
+como cliente de las clases proveedoras MaestroPizzero, Mozo y Pizza, cuyo único servicio sea de 
+nombre main, que ejecute los puntos descriptos anteriormente.
