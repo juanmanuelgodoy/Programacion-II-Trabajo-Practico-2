@@ -37,3 +37,17 @@ class MaestroPizzero:
 
     def obtenerPizzasPorEntregar(self) -> list:
         return self.pizzasPorEntregar
+    
+# Pedir el nombre del maestro pizzero por input
+nombre_pizzero = input("Introduce el nombre del maestro pizzero: ")
+maestro = MaestroPizzero(nombre_pizzero)
+
+# Mostrar el nombre del maestro pizzero
+print(f"El nombre del maestro pizzero es: {maestro.obtenerNombre()}")
+
+# Cambiar el nombre del maestro pizzero por input
+nuevo_nombre = input("Introduce el nuevo nombre del maestro pizzero: ")
+maestro.establecerNombre(nuevo_nombre)
+
+# Mostrar el nuevo nombre
+print(f"El nuevo nombre del maestro pizzero es: {maestro.obtenerNombre()}")
