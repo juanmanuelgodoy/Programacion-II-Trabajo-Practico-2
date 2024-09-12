@@ -1,9 +1,11 @@
 from MaestroPizzero import MaestroPizzero
 from Mozo import Mozo
+
 class TesterPizzeria:
     def __init__(self):
         self.maestro_pizzero = None
         self.mozo = None
+
     def menu_principal(self):
         print("Bienvenido a la Pizzería")
 
@@ -31,7 +33,8 @@ class TesterPizzeria:
                 break
             else:
                 print("Opción no válida, intente nuevamente.")
-def menu_maestro_pizzero(self):
+
+    def menu_maestro_pizzero(self):
         while True:
             print("\n--- Menú Maestro Pizzero ---")
             print("1. Registrar nuevo nombre")
@@ -67,7 +70,8 @@ def menu_maestro_pizzero(self):
                 break
             else:
                 print("Opción no válida, intente nuevamente.")
-def menu_mozo(self):
+
+    def menu_mozo(self):
         while True:
             print("\n--- Menú Mozo ---")
             print("1. Registrar nuevo nombre")
@@ -100,6 +104,7 @@ def menu_mozo(self):
                 break
             else:
                 print("Opción no válida, intente nuevamente.")
+
 # Ejecutar el programa
 if __name__ == "__main__":
     tester = TesterPizzeria()
