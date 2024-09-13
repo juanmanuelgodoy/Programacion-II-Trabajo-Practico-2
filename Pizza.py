@@ -1,52 +1,47 @@
 class Pizza:
+
     def __init__(self, var: str):
         self.variedad = var
 
     def establecerVariedad(self, var: str):
         self.variedad = var
+        print(f"Nombre establecido: {pizza.obtenernombre(self.variedad)}")
 
     def obtenerVariedad(self) -> str:
         return self.variedad
-# Menú interactivo
-while True:
-    print("\nMenú de opciones:")
-    print("1. Ingresar variedad de la pizza")
-    print("2. Mostrar variedad de la pizza")
-    print("3. Cambiar variedad de la pizza")
-    print("4. Salir")
+        print(f"La variedad de la pizza es: {pizza.obtenervariedad(self.variedad)}")
 
-    opcion = input("Elige una opción: ")
+def pizza():
+    pizza = Pizza()
 
-    match opcion:
-        case "1":
-            variedad = input("Introduce la variedad de la pizza: ")
-            pizza = Pizza(variedad)
-            print(f"Pizza de variedad '{pizza.obtenerVariedad()}' creada.")
+    while True:
+        print("========== Menú Pizza ==========")
+        print("1- Establecer nombre")
+        print("2- Tomar pedido")
+        print("3- Cocinar pizza")
+        print("4- Entregar pizza")
+        print("5- Obtener nombre")
+        print("6- Obtener pizzas por cocinar")
+        print("7- Obtener pizzas por entregar")
+        print("o- Salir del menú Pizza")
+        print("================================")
 
-        case "2":
-            if 'pizza' in locals():
-                print(f"La variedad de la pizza es: {pizza.obtenerVariedad()}")
-            else:
-                print("Primero debes ingresar la variedad de la pizza (opción 1).")
+        opcion = int(input("Ingrese una opción: "))
 
-        case "3":
-            if 'pizza' in locals():
-                nueva_variedad = input("Introduce la nueva variedad de la pizza: ")
-                pizza.establecerVariedad(nueva_variedad)
-                print(f"La nueva variedad de la pizza es: {pizza.obtenerVariedad()}")
-            else:
-                print("Primero debes ingresar la variedad de la pizza (opción 1).")
+        match opcion:
 
-        case "4":
-            print("Saliendo del menú.")
-            break
+            case 0:
+                print("Ha salido del menú Pizza.")
+                break 
 
-        case _:
-            print("Opción no válida. Por favor, elige una opción del 1 al 4.")
+            case 1:
+                nombre = input("Ingrese el nombre de la pizza: ")
+                pizza.establecerNombre(nombre)
+                print("Nombre de la pizza registrado con éxito.")
 
+            case 2: 
+                pizza.obtenerVariedad()
+                print("Pedido realizado con éxito.")
 
-
-
-
-
-
+            case _:
+                print("Opción no válida. Intente nuevamente.")
