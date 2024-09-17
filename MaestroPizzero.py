@@ -1,6 +1,7 @@
 class MaestroPizzero:
 
     nombreMaestro = []
+    pizzasPorEntregar = []
 
     def __init__(self, nombre=""):
         self.nombre = nombre
@@ -21,8 +22,10 @@ class MaestroPizzero:
             pizza = self.pizzasPorCocinar.pop(0)
             self.pizzasPorEntregar.append(pizza)
             print(f"La pizza de la variedad {pizza} ha sido cocinada.")
+            return self.pizzasPorEntregar
         else:
             print("No hay pizzas para cocinar.")
+            return self.pizzasPorEntregar == []
 
     def entregar(self):
         if self.pizzasPorEntregar:

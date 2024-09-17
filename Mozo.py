@@ -1,88 +1,68 @@
 import Pizza
-import MaestroPizzero
 
 class Mozo():
 
-    nombreMozo1 = []
-    nombreMozo2 = []
+    nombreMozo = []
+
     def __init__(self, nombre="", pizza=None):
         self.nombre = nombre
         self.pizzas = []
 
-    def establecerNombre1(self, nombre):
+    def establecerNombre(self, nombre):
         self.nombre = nombre
-        self.nombreMozo1.append(nombre)
-        print(f"El nombre del primer mozo es: {self.nombreMozo1[-1]}")        
+        self.nombreMozo.append(nombre)
+        print(f"El nombre del mozo es: {self.nombreMozo[-1]}")        
 
-    def establecerNombre2(self, nombre):
-        self.nombre = nombre
-        self.nombreMozo2.append(nombre)
-        print(f"El nombre del segundo mozo es: {self.nombreMozo2[-1]}")        
+    def tomarPizzas(self, pizza):
+        if len(self.pizzas) < 2:
+            self.pizzas.append(pizza)
+            print(f'Pedido de una pizza de la variedad: {pizza} recibido')
+        else:
+            print('El mozo solo puede llevar un máximo de 2 pizzas a la vez.')
 
-    def tomarPizzas1(self, pizza):
-        self.pizzas.append(pizza)
-        print(f"Pedido de {pizza} recibido.")
-
-    def tomarPizzas2(self, pizza):
-        self.pizzas.append(pizza)
-        print(f"Pedido de {pizza} recibido.")        
-
-    def servirPizzas1(self):
+    def servirPizzas(self):
         if len(self.pizzas) > 0:
-            pizza = self.pizzas.pop(0)
-            print(f"Sirviendo pizza: {pizza}")
+            if len(self.pizzas) == 2: 
+                print(f"Sirviendo pizza de la variedad: {self.pizzas[0]} y {self.pizzas[1]}")
+                self.pizzas.clear()
+            elif len(self.pizzas) == 1:
+                print(f"Sirviendo pizza de la variedad: {self.pizzas[0]}")
+                self.pizzas.clear()
         else:
-            print("No hay pizzas por cocinar.")
+            print("No hay pizzas para servir.")
 
-    def servirPizzas2(self):
-        if len(self.pizzas) > 0:
-            pizza = self.pizzas.pop(0)
-            print(f"Sirviendo pizza: {pizza}")
+    def obtenerNombre(self):
+        if self.nombreMozo == []:
+            print("El mozo aún no tiene nombre definido.")
         else:
-            print("No hay pizzas por cocinar.")            
-    
-    def obtenerNombre1(self):
-        if self.nombreMozo1 == []:
-            print("El primer mozo aún no tiene nombre definido.")
-        else:
-            print(f"El nombre del primer mozo es: {self.nombreMozo1[-1]}") 
+            print(f"El nombre del mozo es: {self.nombreMozo[-1]}") 
 
-    def obtenerNombre2(self):
-        if self.nombreMozo2 == []:
-            print("El segundo mozo aún no tiene nombre definido.")
-        else:
-            print(f"El nombre del segundo mozo es: {self.nombreMozo2[-1]}")             
-    
     def obtenerPizzas(self):
         return len(self.pizzas)
     
-    def obtenerEstadoLibre1(self):
-        if self.obtenerPizzas1() == 0:
-            print(f"El mozo {self.obtenerNombre1()} estado libre")
-        else:
-            print(f"El mozo {self.obtenerNombre1()} tiene {self.obtenerPizzas1()} pizza(s)")
-    
-    def obtenerEstadoLibre2(self):
-        if self.obtenerPizzas2() == 0:
-            print(f"El mozo {self.obtenerNombre2()} estado libre")
-        else:
-            print(f"El mozo {self.obtenerNombre2()} tiene {self.obtenerPizzas2()} pizza(s)")  
+    def obtenerEstadoLibre(self):
+        pizzas = self.obtenerPizzas()  
+        nombre = self.obtenerNombre()  
+
+        if pizzas <= 1 and nombre == []:
+            print("El mozo aún no tiene nombre definido y está libre.")
+        elif pizzas <=1 and nombre != []:
+            print("El mozo está libre")
+        elif pizzas >2 and nombre == []:
+            print(f"El mozo aún no tiene nombre definido y tiene {pizzas} pizza(s) para entregar")
+        else:            
+            print(f"El mozo tiene {pizzas} pizzas para entregar")
 
 def mozo():
     mozo = Mozo()
 
     while True:
         print("========== Menú Mozo ==========")
-        print("1- Establecer nombre mozo 1")
-        print("2- Establecer nombre mozo 2")
-        print("3- Tomar pizzas mozo 1")
-        print("4- Tomar pizzas mozo 2")        
-        print("5- Servir pizzas mozo 1")
-        print("6- Servir pizzas mozo 2")        
-        print("7- Obtener nombre mozo 1")
-        print("8- Obtener nombre mozo 2")
-        print("9- Obtener estado del mozo 1")
-        print("10- Obtener estado del mozo 2")        
+        print("1- Establecer nombre mozo")
+        print("2- Tomar pizzas mozo")
+        print("3- Servir pizzas mozo")
+        print("4- Obtener nombre mozo")
+        print("5- Obtener estado del mozo")
         print("0- Salir del menú Mozo")
         print("===============================")
         
@@ -95,38 +75,21 @@ def mozo():
                 break
 
             case 1:
-                nombre = input("Ingrese el nombre del primer mozo: ")
-                mozo.establecerNombre1(nombre)
+                nombre = input("Ingrese el nombre del mozo: ")
+                mozo.establecerNombre(nombre)
 
             case 2:
-                nombre = input("Ingrese el nombre del segundo mozo: ")
-                mozo.establecerNombre2(nombre)
+                pizza = input("Ingrese variedad de la pizza pedida: ")
+                mozo.tomarPizzas(pizza)
 
             case 3:
-                pizza = input("Ingrese el nombre de la pizza pedida: ")
-                mozo.tomarPizzas1(pizza)
+                mozo.servirPizzas()
 
             case 4:
-                pizza = input("Ingrese el nombre de la pizza pedida: ")
-                mozo.tomarPizzas2(pizza)                
+                mozo.obtenerNombre()
 
             case 5:
-                mozo.servirPizzas1()
-
-            case 6:
-                mozo.servirPizzas2()                
-
-            case 7:
-                mozo.obtenerNombre1()
-
-            case 8:
-                mozo.obtenerNombre2()              
-
-            case 9:
-                mozo.obtenerEstadoLibre1()
-
-            case 10:
-                mozo.obtenerEstadoLibre2()
+                mozo.obtenerEstadoLibre()
 
             case _:
                 print("Opción no válida, ingrese una opción válida: ") 
