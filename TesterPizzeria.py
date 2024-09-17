@@ -29,4 +29,5 @@ def iniciar():
             case _:
                 print("La opción ingresada no es válida, ingrese una opción válida:")
 
-iniciar()
+if __name__ == '__main__':
+    iniciar()
