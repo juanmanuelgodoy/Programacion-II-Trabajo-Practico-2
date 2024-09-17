@@ -1,11 +1,4 @@
-Problema: 
 
-La pizzería de Don Pipo cuenta con tres empleados, un maestro pizzero y dos mozos 
-que se encargan de entregar los pedidos a los clientes. Cada mozo puede cargar hasta 
-dos pizzas al mismo tiempo. El maestro pizzero puede cocinar todas las pizzas que se 
-necesiten al mismo tiempo, pues las masas ya están estiradas desde temprano, 
-los ingredientes listos en las heladeras y las instalaciones de la cocina así lo permiten. 
-Este último no necesita descansar, aunque solo puede tomar un único pedido a la vez.
 
 EJERCICIOS:
 
