@@ -7,12 +7,11 @@ def menu():
     print("================ MENÚ GENERAL ======================\n")
     print("Seleccione la opción que desea:  ")
     print("=====================================================")
-    print("1- Para pedir una pizza")
-    print("2- Para ordenar a la cocina ")
-    print("3- Para entregar una pizza")
+    print("1- Menú pizza")
+    print("2- Menú maestro pizzero")
+    print("3- Menú mozo")
     print("0- Para salir del menú general")
     print("===================================================\n")
-
 
 def iniciar():
     while True:
@@ -20,7 +19,7 @@ def iniciar():
         opcion = input("Ingrese una opción: ")
         match opcion:
             case '1':
-                Pizza.pizza()  
+                Pizza.menuPizza()  
             case '2':
                 MaestroPizzero.maestroPizzero()  
             case '3':

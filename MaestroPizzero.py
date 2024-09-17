@@ -1,4 +1,7 @@
 class MaestroPizzero:
+
+    nombreMaestro = []
+
     def __init__(self, nombre=""):
         self.nombre = nombre
         self.pizzasPorCocinar = []
@@ -6,16 +9,18 @@ class MaestroPizzero:
 
     def establecerNombre(self, nombre):
         self.nombre = nombre
+        self.nombreMaestro.append(nombre)
+        print(f"El nombre del maestro pizzero es: {self.nombreMaestro[-1]}")
 
     def tomarPedido(self, pizza):
         self.pizzasPorCocinar.append(pizza)
-        print(f"Pedido de {pizza} recibido.")
+        print(f"Pedido de una pizza de la variedad {pizza} recibido.")
 
     def cocinar(self):
         if self.pizzasPorCocinar:
             pizza = self.pizzasPorCocinar.pop(0)
             self.pizzasPorEntregar.append(pizza)
-            print(f"La pizza {pizza} ha sido cocinada.")
+            print(f"La pizza de la variedad {pizza} ha sido cocinada.")
         else:
             print("No hay pizzas para cocinar.")
 
@@ -27,13 +32,24 @@ class MaestroPizzero:
             print("No hay pizzas para entregar.")
 
     def obtenerNombre(self):
-        return self.nombre
+        if self.nombreMaestro == []:
+            print("El maestro pizzero aún no tiene nombre definido.")
+        else:
+            print(f"El nombre del maestro pizzero es {self.nombreMaestro[-1]}") 
 
     def obtenerPizzasPorCocinar(self):
-        return self.pizzasPorCocinar
+        if self.pizzasPorCocinar == []: 
+            print("No hay ninguna pizza para cocinar")
+        else:
+            for var in self.pizzasPorCocinar:
+                print(f"La pizza por cocinar es de la variedad: {var}")
 
     def obtenerPizzasPorEntregar(self):
-        return self.pizzasPorEntregar
+        if self.pizzasPorEntregar == []: 
+            print("No hay ninguna pizza para entregar")
+        else:
+            for var in self.pizzasPorEntregar:
+                print(f"La pizza para entregar es de la variedad: {var}")
 
 
 def maestroPizzero():
@@ -49,31 +65,40 @@ def maestroPizzero():
         print("6- Obtener pizzas por cocinar")
         print("7- Obtener pizzas por entregar")
         print("0- Salir del menú Maestro Pizzero")
+        print("=========================================\n")
         
         opcion = int(input("Seleccione una opción: "))
 
         match opcion:
+
             case 0:
                 print("Ha salido del menú Maestro Pizzero.")
                 break
+
             case 1:
                 nombre = input("Ingrese el nombre del maestro pizzero: ")
                 maestro.establecerNombre(nombre)
-                print(f"Nombre establecido: {maestro.obtenerNombre()}")
+
             case 2:
                 pizza = input("Ingrese el nombre de la pizza: ")
                 maestro.tomarPedido(pizza)
+
             case 3:
                 maestro.cocinar()
+
             case 4:
                 maestro.entregar()
+
             case 5:
-                print(f"El nombre del maestro pizzero es: {maestro.obtenerNombre()}")
+                maestro.obtenerNombre()
+
             case 6:
-                print(f"Pizzas por cocinar: {maestro.obtenerPizzasPorCocinar()}")
+                maestro.obtenerPizzasPorCocinar()
+
             case 7:
-                print(f"Pizzas por entregar: {maestro.obtenerPizzasPorEntregar()}")
+                maestro.obtenerPizzasPorEntregar()
+
             case _:
-                print("Opción no válida, intente nuevamente.")
+                print("La opción ingresada no es válida, ingrese una opción válida: ")
 
 

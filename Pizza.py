@@ -1,28 +1,29 @@
 class Pizza():
 
+        variedadPizza = []
         def __init__(self, var=""):
             self.var = var
         
-        def establecerNombre(self, var):
+        def establecerVariedad(self, var):
             self.var = var
-            print(f"Nombre establecido: {pizza.obtenerNombre()}")
+            self.variedadPizza.append(var)
+            print(f"Variedad establecida: {self.variedadPizza[-1]}")
 
         def obtenerVariedad(self):
-            return self.var
-        print(f"La variedad de la pizza es: {pizza.obtenerVariedad()}")        
+            if self.variedadPizza == []: 
+                print("No hay ninguna variedad cargada.")
+            else:
+                for var in self.variedadPizza:
+                    print(f"La variedad de la pizza es: {var}")
+                
 
-def pizza():
+def menuPizza():
     pizza = Pizza()
 
     while True:
         print("========== Menú Pizza ==========")
-        print("1- Establecer nombre")
-        print("2- Tomar pedido")
-        print("3- Cocinar pizza")
-        print("4- Entregar pizza")
-        print("5- Obtener nombre")
-        print("6- Obtener pizzas por cocinar")
-        print("7- Obtener pizzas por entregar")
+        print("1- Establecer variedad")
+        print("2- Obtener variedad")
         print("0- Salir del menú Pizza")
         print("===============================")
         
@@ -35,11 +36,11 @@ def pizza():
                 break
 
             case 1:
-                nombre = input("Ingrese el nombre de la pizza: ")
-                pizza.establecerNombre(nombre)
+                variedad = input("Ingrese la variedad de la pizza: ")
+                pizza.establecerVariedad(variedad)
 
             case 2:
                 pizza.obtenerVariedad()
 
             case _:
-                print("Opción no válida, intente nuevamente.")
+                print("La opción ingresada no es válida, ingrese una opción válida: ")
