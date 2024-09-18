@@ -18,19 +18,29 @@ class MaestroPizzero:
         print(f"Pedido de una pizza de la variedad {pizza} recibido.")
 
     def cocinar(self):
-        if self.pizzasPorCocinar:
-            pizza = self.pizzasPorCocinar.pop(0)
-            self.pizzasPorEntregar.append(pizza)
-            print(f"La pizza de la variedad {pizza} ha sido cocinada.")
-            return self.pizzasPorEntregar
+
+        if len(self.pizzasPorCocinar) != 0:
+            for pizza in self.pizzasPorCocinar[:]:
+                self.pizzasPorEntregar.append(pizza)
+                print(f"La pizza de la variedad {pizza} ha sido cocinada.")
+
+            self.pizzasPorCocinar.clear() 
         else:
-            print("No hay pizzas para cocinar.")
-            return self.pizzasPorEntregar == []
+            print("No hay pizzas para cocinar.")            
+
+
+
 
     def entregar(self):
-        if self.pizzasPorEntregar:
-            pizza = self.pizzasPorEntregar.pop(0)
-            print(f"La pizza {pizza} ha sido entregada.")
+
+        if len(self.pizzasPorEntregar) > 0:
+            if len(self.pizzasPorEntregar) >= 2: 
+                print(f"Entregando pizza de la variedad: {self.pizzasPorEntregar[0]} y {self.pizzasPorEntregar[1]}")
+                self.pizzasPorEntregar.pop(0)
+                self.pizzasPorEntregar.pop(0)
+            elif len(self.pizzasPorEntregar) == 1:
+                print(f"Entregando pizza de la variedad: {self.pizzasPorEntregar[0]}")
+                self.pizzasPorEntregar.pop(0)
         else:
             print("No hay pizzas para entregar.")
 
